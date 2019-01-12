@@ -1,0 +1,28 @@
+{
+  "name": "ToDo-List",
+  "version": "0.1.0",
+  "description": "ToDo list is make with Next.js, Firebase, Redux Saga, SASS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "commit": "npx git-cz"
+  },
+  "keywords": [],
+  "author": "David Sanchez <david95sb@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
