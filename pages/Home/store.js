@@ -11,10 +11,11 @@ function mapStateToProps(store) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const { getListData } = listRedux.actions;
+  const { getListData, createListData } = listRedux.actions;
 
   return {
-    getList: () => dispatch(getListData())
+    getList: () => dispatch(getListData()),
+    createList: () => dispatch(createListData())
   };
 }
 
