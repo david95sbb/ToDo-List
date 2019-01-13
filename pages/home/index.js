@@ -11,7 +11,7 @@ const Home = props => {
 
   return (
     <div>
-      <p className={css.color}>Hello Next.js</p>
+      <p className={css.color}>Panel principal</p>
       <button type="button" onClick={() => getList()}>
         Cargar listas
       </button>
@@ -35,7 +35,7 @@ const Home = props => {
 Home.propTypes = {
   getList: PropTypes.func.isRequired,
   createList: PropTypes.func.isRequired,
-  list: PropTypes.object.isRequired
+  list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired
 };
 
 export default withStore(Home);
