@@ -11,6 +11,7 @@ Estudiar y entender:
 - [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/)
 - [Semantic Version](https://semver.org/)
 - [React](https://reactjs.org/)
+- [Next.JS](https://nextjs.org/)
 - [Redux Saga](https://redux-saga-firebase.js.org/)
 - [Redux Form](https://redux-form.com/6.0.0-rc.1/)
 - [Firebase database](https://firebase.google.com/docs/database/)
