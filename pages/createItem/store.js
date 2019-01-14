@@ -3,10 +3,10 @@ import listRedux from '../../redux/list';
 import { Router } from '../../routes';
 
 function mapStateToProps(store) {
-  const list = store.getIn(['list', 'list']).toJS();
+  const itemCreated = store.getIn(['list', 'itemCreated']);
 
   return {
-    list
+    itemCreated
   };
 }
 
@@ -14,9 +14,9 @@ function mapDispatchToProps(dispatch) {
   const { setItemCreated } = listRedux.actions;
 
   return {
-    goToCreate: () => {
+    submitSuccess: () => {
       dispatch(setItemCreated(false));
-      return Router.pushRoute('/create');
+      return Router.pushRoute('/');
     }
   };
 }

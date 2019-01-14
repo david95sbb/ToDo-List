@@ -31,15 +31,11 @@ export function* getList() {
   }
 }
 
-export function* createList() {
+export function* createList(action) {
   try {
-    yield call(rfsApp.database.create, `listas`, {
-      id: 4,
-      name: 'item 4',
-      description: 'lorem ipsum 4',
-      status: 'toDo',
-      createDate: '12/12/2021'
-    });
+    const { data } = action;
+    yield call(rfsApp.database.create, `listas`, data);
+    yield put(listActions.setItemCreated(true));
   } catch (e) {
     console.warn(e);
   }

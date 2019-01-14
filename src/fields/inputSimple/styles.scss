@@ -1,0 +1,48 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+// Font Variables
+$montserrat: 'Montserrat', sans-serif;
+
+$mainColor: #9758B7;
+$grayLight: #F5F6FA;
+$grayBold: #B3BBC5;
+
+.inputStyle {
+  font-family: $montserrat;
+  width: 200px;
+  text-indent: 6px;
+  margin: 10px 0px;
+  background-color: #F6F8F9;
+  border: none;
+  padding: 10px 0px;
+
+  :focus {
+    outline: none;
+  }
+}
+
+.contentInput {
+  display: block;
+  font-family: $montserrat;
+  width: 100%;
+
+  span {
+    font-size: 0.8em;
+    font-weight: bold;
+    vertical-align: top;
+    margin: 20px 0px;
+    color: #6f7071;
+  }
+
+  > div, > span {
+    display: inline-block;
+    width: 200px;
+  }
+}
+
+.error {
+  font-size: 0.6em;
+  color: #ff4d4d;
+  margin: 0px 0px 10px 0px;
+}
