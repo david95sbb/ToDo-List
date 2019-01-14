@@ -48,12 +48,13 @@ class Done extends React.Component {
         )}
         {size(list) > 0 ? (
           <TableContent params={params}>
-            {map(list, item => {
+            {map(list, (item, num) => {
               count += 1;
               return (
                 <ItemList
                   key={count}
                   id={count}
+                  idFb={num}
                   name={item.name}
                   description={item.description}
                   status={item.status}
