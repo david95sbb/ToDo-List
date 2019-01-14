@@ -14,7 +14,7 @@ import css from './styles.scss';
 
 const { getListData } = listRedux.actions;
 
-class Home extends React.Component {
+class Done extends React.Component {
   static async getInitialProps({ store }) {
     store.dispatch(getListData());
   }
@@ -34,16 +34,18 @@ class Home extends React.Component {
     return (
       <div className={css.view}>
         <h1 className={css.title}>Dashboard</h1>
-        <h5 className={css.subtitle}>See all the lists</h5>
-        <div
-          role="button"
-          onKeyPress={() => null}
-          tabIndex={0}
-          className={css.addItem}
-          onClick={() => goToCreate()}
-        >
-          Create item +
-        </div>
+        <h5 className={css.subtitle}>See all the items</h5>
+        {size(list) > 0 && (
+          <div
+            role="button"
+            onKeyPress={() => null}
+            tabIndex={0}
+            className={css.addItem}
+            onClick={() => goToCreate()}
+          >
+            Create item +
+          </div>
+        )}
         {size(list) > 0 ? (
           <TableContent params={params}>
             {map(list, item => {
@@ -61,16 +63,27 @@ class Home extends React.Component {
             })}
           </TableContent>
         ) : (
-          <div>No hay listas</div>
+          <div className={css.contentEmpty}>
+            <div className={css.textEmpty}>
+              Sorry, there is no created items, but you can create one to start
+            </div>
+            <button
+              type="button"
+              className={css.buttonSave}
+              onClick={() => goToCreate()}
+            >
+              Create item
+            </button>
+          </div>
         )}
       </div>
     );
   }
 }
 
-Home.propTypes = {
+Done.propTypes = {
   list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   goToCreate: PropTypes.func.isRequired
 };
 
-export default withStore(Home);
+export default withStore(Done);

@@ -11,6 +11,7 @@ import listRedux from '../../redux/list';
 import withStore from './store';
 
 import css from './styles.scss';
+import { Router } from '../../routes';
 
 const { getListData } = listRedux.actions;
 
@@ -33,8 +34,8 @@ class Done extends React.Component {
 
     return (
       <div className={css.view}>
-        <h1 className={css.title}>To Do</h1>
-        <h5 className={css.subtitle}>View items in To Do status</h5>
+        <h1 className={css.title}>Done</h1>
+        <h5 className={css.subtitle}>View items in Done status</h5>
         {size(list) > 0 && (
           <div
             role="button"
@@ -65,14 +66,15 @@ class Done extends React.Component {
         ) : (
           <div className={css.contentEmpty}>
             <div className={css.textEmpty}>
-              Sorry, there is not Todo items, but you can create one to start
+              Sorry, there is not done items, but you can change status in
+              Dashboard
             </div>
             <button
               type="button"
               className={css.buttonSave}
-              onClick={() => goToCreate()}
+              onClick={() => Router.pushRoute('/')}
             >
-              Create item
+              Go to Dashboard
             </button>
           </div>
         )}

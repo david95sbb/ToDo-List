@@ -29,3 +29,21 @@ $grayBold: #B3BBC5;
     font-size: 0.9em;
   }
 }
+
+.todo {
+  color: $grayBold;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.done {
+  color: #55b771;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.delete {
+  color: #ff4d4d;
+  cursor: pointer;
+  margin: 10px 0px;
+}

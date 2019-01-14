@@ -13,7 +13,11 @@ const ItemList = props => {
       <td>{description}</td>
       <td>{status}</td>
       <td>{createDate}</td>
-      <td>Delete</td>
+      <td>
+        {status !== 'toDo' && <div className={css.todo}>To do</div>}
+        {status !== 'done' && <div className={css.done}>Done</div>}
+        {status !== 'deleted' && <div className={css.delete}>Delete</div>}
+      </td>
     </tr>
   );
 };

@@ -1,0 +1,27 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+// Font Variables
+$montserrat: 'Montserrat', sans-serif;
+
+$mainColor: #9758B7;
+$grayLight: #F5F6FA;
+$grayBold: #B3BBC5;
+
+.contentItem {
+  display: flex;
+  background-color: white;
+  padding: 40px 10px;
+  justify-content: center;
+  font-family: $montserrat;
+  
+  > div {
+    display: inline-flex;
+    flex-grow: 1;
+
+    a {
+      text-decoration: none;
+      margin: auto;
+    }
+  }
+}
