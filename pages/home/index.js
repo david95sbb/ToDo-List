@@ -2,39 +2,60 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import size from 'lodash/size';
+
+import ItemList from '../../src/components/itemList';
+import TableContent from '../../src/components/tableContent';
+
+import listRedux from '../../redux/list';
+
 import withStore from './store';
 
 import css from './styles.scss';
 
-const Home = props => {
-  const { getList, createList, list } = props;
+const { getListData } = listRedux.actions;
 
-  return (
-    <div>
-      <p className={css.color}>Panel principal</p>
-      <button type="button" onClick={() => getList()}>
-        Cargar listas
-      </button>
-      <button type="button" onClick={() => createList()}>
-        Crear item
-      </button>
-      {size(list) > 0 ? (
-        map(list, item => (
-          <div key={item.id}>
-            <div>{item.id}</div>
-            <div>{item.name}</div>
-          </div>
-        ))
-      ) : (
-        <div>No hay listas</div>
-      )}
-    </div>
-  );
-};
+class Home extends React.Component {
+  static async getInitialProps({ store }) {
+    store.dispatch(getListData());
+  }
+
+  render() {
+    const { list } = this.props;
+    const params = [
+      { id: 1, name: '#' },
+      { id: 2, name: 'Name' },
+      { id: 3, name: 'Description' },
+      { id: 4, name: 'Status' },
+      { id: 5, name: 'Created Date' },
+      { id: 6, name: 'Actions' }
+    ];
+
+    return (
+      <div className={css.view}>
+        <h1 className={css.title}>Dashboard</h1>
+        <h5 className={css.subtitle}>See all the lists</h5>
+        {size(list) > 0 ? (
+          <TableContent params={params}>
+            {map(list, item => (
+              <ItemList
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                description={item.description}
+                status={item.status}
+                createDate={item.createdate}
+              />
+            ))}
+          </TableContent>
+        ) : (
+          <div>No hay listas</div>
+        )}
+      </div>
+    );
+  }
+}
 
 Home.propTypes = {
-  getList: PropTypes.func.isRequired,
-  createList: PropTypes.func.isRequired,
   list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired
 };
 
