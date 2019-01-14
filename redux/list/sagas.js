@@ -34,8 +34,11 @@ export function* getList() {
 export function* createList() {
   try {
     yield call(rfsApp.database.create, `listas`, {
-      id: 2,
-      name: 'item 2'
+      id: 4,
+      name: 'item 4',
+      description: 'lorem ipsum 4',
+      status: 'toDo',
+      createDate: '12/12/2021'
     });
   } catch (e) {
     console.warn(e);
