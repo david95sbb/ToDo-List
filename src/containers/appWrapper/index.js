@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
+import Header from '../header';
 import css from './styles.scss';
 
 const AppWrapper = props => {
@@ -8,7 +8,10 @@ const AppWrapper = props => {
 
   return (
     <Fragment>
-      <div className={css.contetView}>{children}</div>
+      <div className={css.contetView}>
+        <Header />
+        {children}
+      </div>
     </Fragment>
   );
 };
