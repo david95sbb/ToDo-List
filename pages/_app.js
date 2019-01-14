@@ -7,6 +7,8 @@ import withRedux from '../HOCs/withRedux';
 import reducers from '../redux/reducers';
 import sagas from '../redux/sagas';
 
+import AppWrapper from '../src/containers/appWrapper';
+
 const customReduxMiddlewares = [];
 
 class ToDoList extends App {
@@ -25,7 +27,9 @@ class ToDoList extends App {
     return (
       <Container>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <AppWrapper>
+            <Component {...pageProps} />
+          </AppWrapper>
         </Provider>
       </Container>
     );

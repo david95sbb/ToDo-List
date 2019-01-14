@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { list } = this.props;
+    const { list, goToCreate } = this.props;
     const params = [
       { id: 1, name: '#' },
       { id: 2, name: 'Name' },
@@ -29,23 +29,36 @@ class Home extends React.Component {
       { id: 5, name: 'Created Date' },
       { id: 6, name: 'Actions' }
     ];
+    let count = 0;
 
     return (
       <div className={css.view}>
         <h1 className={css.title}>Dashboard</h1>
         <h5 className={css.subtitle}>See all the lists</h5>
+        <div
+          role="button"
+          onKeyPress={() => null}
+          tabIndex={0}
+          className={css.addItem}
+          onClick={() => goToCreate()}
+        >
+          Create item +
+        </div>
         {size(list) > 0 ? (
           <TableContent params={params}>
-            {map(list, item => (
-              <ItemList
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                description={item.description}
-                status={item.status}
-                createDate={item.createdate}
-              />
-            ))}
+            {map(list, item => {
+              count += 1;
+              return (
+                <ItemList
+                  key={count}
+                  id={count}
+                  name={item.name}
+                  description={item.description}
+                  status={item.status}
+                  createDate={item.createDate}
+                />
+              );
+            })}
           </TableContent>
         ) : (
           <div>No hay listas</div>
@@ -56,7 +69,8 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired
+  list: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  goToCreate: PropTypes.func.isRequired
 };
 
 export default withStore(Home);
