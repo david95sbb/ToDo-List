@@ -9,7 +9,7 @@ function mapStateToProps(store) {
   const list = store.getIn(['list', 'list']).toJS();
 
   return {
-    list: size(list) > 0 && filter(list, item => item.status === 'done')
+    list: size(list) > 0 && filter(list, item => item.status === 'deleted')
   };
 }
 

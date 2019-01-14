@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, fork } from 'redux-saga/effects';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import ReduxSagaFirebase from 'redux-saga-firebase';
@@ -41,7 +41,18 @@ export function* createList(action) {
   }
 }
 
+export function* updateStatusForItem(action) {
+  try {
+    const { id, status } = action;
+    yield call(rfsApp.database.patch, `listas/${id}`, { status });
+    yield fork(getList);
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
 export default [
   takeLatest(Actions.GET_LIST_DATA, getList),
-  takeLatest(Actions.CREATE_LIST_DATA, createList)
+  takeLatest(Actions.CREATE_LIST_DATA, createList),
+  takeLatest(Actions.UPDATE_STATUS_FOR_ITEM, updateStatusForItem)
 ];
